@@ -34,14 +34,61 @@ namespace Simulacion_Library.Models
         /// <param name="inicial"></param>
         /// <param name="final"></param>
         /// <returns></returns>
-        public double DistanciaInclinada(Coordenada inicial, Coordenada final)
+        public static double DistanciaInclinada(Coordenada inicial, Coordenada final)
         {
             return Math.Sqrt(
                         Math.Pow((final.X - inicial.X),2) + 
                         Math.Pow((final.Y - inicial.Y),2) + 
                         Math.Pow((final.Z - inicial.Z),2)
                         );
-
         }
+
+        /// <summary>
+        /// Calcula la distancia horizontal entre dos coordenas
+        /// </summary>
+        /// <param name="inicial"></param>
+        /// <param name="final"></param>
+        /// <returns></returns>
+        public static double DistanciaHorizontal(Coordenada inicial, Coordenada final)
+        {
+            return Math.Sqrt(
+                        Math.Pow((final.X - inicial.X), 2) +
+                        Math.Pow((final.Y - inicial.Y), 2)
+                        );
+        }
+
+        public static double DistanciaVertical(Coordenada inicial, Coordenada final)
+        {
+            return final.Y - inicial.Y;
+        }
+
+        public static double Gradiente(double dblVertical, double dblHorizontal)
+        {            
+            if (dblHorizontal == 0)
+                return 0;
+            else
+                return 100 * dblVertical / dblHorizontal;
+
+            //double nGradiente = 0;
+
+            //dblHorizontal = 0 ? nGradiente : nGradiente = 100 * dblVertical / dblHorizontal;
+        }
+
+        public static double Gradiente(Coordenada inicial, Coordenada final)
+        {
+
+            double dblHorizontal = DistanciaHorizontal(inicial, final);
+            double dblVertical = DistanciaVertical(inicial, final);
+
+            if (dblHorizontal == 0)
+                return 0;
+            else
+                return 100 * dblVertical / dblHorizontal;
+
+            //double nGradiente = 0;
+
+            //dblHorizontal = 0 ? nGradiente : nGradiente = 100 * dblVertical / dblHorizontal;
+        }
+
     }
 }
