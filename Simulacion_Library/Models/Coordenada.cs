@@ -59,7 +59,7 @@ namespace Simulacion_Library.Models
 
         public static double DistanciaVertical(Coordenada inicial, Coordenada final)
         {
-            return final.Y - inicial.Y;
+            return final.Z - inicial.Z;
         }
 
         public static double Gradiente(double dblVertical, double dblHorizontal)

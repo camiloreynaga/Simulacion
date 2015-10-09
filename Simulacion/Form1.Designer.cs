@@ -46,6 +46,9 @@
             this.tbXFin = new System.Windows.Forms.TextBox();
             this.tbYFin = new System.Windows.Forms.TextBox();
             this.tbZFin = new System.Windows.Forms.TextBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.dgvGrilla = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).BeginInit();
             this.SuspendLayout();
             // 
             // tbXIni
@@ -70,7 +73,7 @@
             this.tbYIni.Location = new System.Drawing.Point(101, 62);
             this.tbYIni.Name = "tbYIni";
             this.tbYIni.Size = new System.Drawing.Size(100, 20);
-            this.tbYIni.TabIndex = 0;
+            this.tbYIni.TabIndex = 2;
             this.tbYIni.Text = "5";
             // 
             // label2
@@ -87,7 +90,7 @@
             this.tbZIni.Location = new System.Drawing.Point(101, 88);
             this.tbZIni.Name = "tbZIni";
             this.tbZIni.Size = new System.Drawing.Size(100, 20);
-            this.tbZIni.TabIndex = 0;
+            this.tbZIni.TabIndex = 4;
             this.tbZIni.Text = "5";
             // 
             // label3
@@ -104,7 +107,7 @@
             this.tbInclinada.Location = new System.Drawing.Point(101, 126);
             this.tbInclinada.Name = "tbInclinada";
             this.tbInclinada.Size = new System.Drawing.Size(100, 20);
-            this.tbInclinada.TabIndex = 0;
+            this.tbInclinada.TabIndex = 6;
             // 
             // label4
             // 
@@ -120,7 +123,7 @@
             this.tbHorizontal.Location = new System.Drawing.Point(101, 152);
             this.tbHorizontal.Name = "tbHorizontal";
             this.tbHorizontal.Size = new System.Drawing.Size(100, 20);
-            this.tbHorizontal.TabIndex = 0;
+            this.tbHorizontal.TabIndex = 7;
             // 
             // label5
             // 
@@ -136,7 +139,7 @@
             this.tbVertical.Location = new System.Drawing.Point(101, 178);
             this.tbVertical.Name = "tbVertical";
             this.tbVertical.Size = new System.Drawing.Size(100, 20);
-            this.tbVertical.TabIndex = 0;
+            this.tbVertical.TabIndex = 8;
             // 
             // label6
             // 
@@ -152,7 +155,7 @@
             this.tbGradiente.Location = new System.Drawing.Point(101, 204);
             this.tbGradiente.Name = "tbGradiente";
             this.tbGradiente.Size = new System.Drawing.Size(100, 20);
-            this.tbGradiente.TabIndex = 0;
+            this.tbGradiente.TabIndex = 9;
             // 
             // label7
             // 
@@ -168,7 +171,7 @@
             this.btnCalcular.Location = new System.Drawing.Point(459, 36);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(75, 23);
-            this.btnCalcular.TabIndex = 4;
+            this.btnCalcular.TabIndex = 11;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
@@ -178,7 +181,7 @@
             this.tbXFin.Location = new System.Drawing.Point(217, 36);
             this.tbXFin.Name = "tbXFin";
             this.tbXFin.Size = new System.Drawing.Size(100, 20);
-            this.tbXFin.TabIndex = 0;
+            this.tbXFin.TabIndex = 1;
             this.tbXFin.Text = "10";
             // 
             // tbYFin
@@ -186,7 +189,7 @@
             this.tbYFin.Location = new System.Drawing.Point(217, 62);
             this.tbYFin.Name = "tbYFin";
             this.tbYFin.Size = new System.Drawing.Size(100, 20);
-            this.tbYFin.TabIndex = 0;
+            this.tbYFin.TabIndex = 3;
             this.tbYFin.Text = "10";
             // 
             // tbZFin
@@ -194,14 +197,34 @@
             this.tbZFin.Location = new System.Drawing.Point(217, 88);
             this.tbZFin.Name = "tbZFin";
             this.tbZFin.Size = new System.Drawing.Size(100, 20);
-            this.tbZFin.TabIndex = 0;
+            this.tbZFin.TabIndex = 5;
             this.tbZFin.Text = "10";
+            // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(459, 69);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 12;
+            this.btnImport.Text = "Importar";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // dgvGrilla
+            // 
+            this.dgvGrilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGrilla.Location = new System.Drawing.Point(235, 126);
+            this.dgvGrilla.Name = "dgvGrilla";
+            this.dgvGrilla.Size = new System.Drawing.Size(464, 211);
+            this.dgvGrilla.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 346);
+            this.ClientSize = new System.Drawing.Size(711, 349);
+            this.Controls.Add(this.dgvGrilla);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -222,6 +245,8 @@
             this.Controls.Add(this.tbXIni);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +272,8 @@
         private System.Windows.Forms.TextBox tbXFin;
         private System.Windows.Forms.TextBox tbYFin;
         private System.Windows.Forms.TextBox tbZFin;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.DataGridView dgvGrilla;
     }
 }
 
