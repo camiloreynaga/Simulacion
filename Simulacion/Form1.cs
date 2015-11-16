@@ -46,6 +46,13 @@ namespace Simulacion
             //tbHorizontal.
         }
 
+        private void Dividir (string linea)
+        {
+            char[] delimitador = { ' '};
+            var l1 = linea.Split(delimitador);
+
+        }
+
         private void btnImport_Click(object sender, EventArgs e)
         {
             // datos_total: Guarda información de gradientes por separado
@@ -53,7 +60,8 @@ namespace Simulacion
             
             OpenFileDialog Dialogo = new OpenFileDialog();
            // Dialogo.InitialDirectory = "D:\\17 Aplicaciones C#\\Simulacion";
-            Dialogo.InitialDirectory = "D:\\";
+            Dialogo.InitialDirectory = "D:\\1 Proyectos SW KIWI SOLUCIONES\\Simulacion\\Docs Simulacion";
+            
             
             try{
                 if (Dialogo.ShowDialog() == DialogResult.OK)
@@ -69,14 +77,20 @@ namespace Simulacion
 
                     // Lista de arreglos en la cual se almacenarán los datos de la variable strLine
                     ArrayList arrLines = new ArrayList();
-                    char[] delimitadores = { ',', '\t' };
+                    char[] delimitadores = { ' ',',', '\t' };
                     while (strLine != null)
                     {
                         strLine = objFile.ReadLine();
+                        //strLine.
+                        Dividir(strLine);
                         if (strLine != null && strLine.Trim().Length > 0)
                         {
                             arrLines.Add(strLine);
-                            dgvGrilla.Rows.Add(strLine.Split(delimitadores));
+                            var linea = strLine.Split(delimitadores).ToList<string>();
+                            linea.RemoveAll(x=>x.ToString()== string.Empty);
+                            
+                            //linea.to
+                            dgvGrilla.Rows.Add(linea.ToArray<string>());
 
                             
                         }
