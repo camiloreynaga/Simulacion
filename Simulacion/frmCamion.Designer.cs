@@ -41,6 +41,7 @@
             this.dgvFuel = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuel)).BeginInit();
@@ -95,9 +96,10 @@
             this.dgvSpeed.Name = "dgvSpeed";
             this.dgvSpeed.Size = new System.Drawing.Size(556, 277);
             this.dgvSpeed.TabIndex = 3;
+            this.dgvSpeed.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSpeed_CellValidated);
             this.dgvSpeed.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSpeed_CellValidating);
-            this.dgvSpeed.CurrentCellChanged += new System.EventHandler(this.dgvSpeed_CurrentCellChanged);
             this.dgvSpeed.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSpeed_RowLeave);
+            this.dgvSpeed.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvSpeed_RowsAdded);
             // 
             // Number
             // 
@@ -152,11 +154,22 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Fuel Consumption by Gradient";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(479, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmCamion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(843, 440);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvFuel);
             this.Controls.Add(this.dgvSpeed);
             this.Controls.Add(this.textBox2);
@@ -177,6 +190,7 @@
             this.Controls.SetChildIndex(this.textBox2, 0);
             this.Controls.SetChildIndex(this.dgvSpeed, 0);
             this.Controls.SetChildIndex(this.dgvFuel, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuel)).EndInit();
@@ -200,5 +214,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Gradient;
         private System.Windows.Forms.DataGridViewTextBoxColumn Full;
         private System.Windows.Forms.DataGridViewTextBoxColumn Empty;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -52,7 +52,8 @@ namespace Simulacion
             DataSet datos_total;
             
             OpenFileDialog Dialogo = new OpenFileDialog();
-            Dialogo.InitialDirectory = "D:\\17 Aplicaciones C#\\Simulacion";
+           // Dialogo.InitialDirectory = "D:\\17 Aplicaciones C#\\Simulacion";
+            Dialogo.InitialDirectory = "D:\\";
             
             try{
                 if (Dialogo.ShowDialog() == DialogResult.OK)
