@@ -26,7 +26,33 @@ namespace Simulacion_Library.Models
         /// <summary>
         /// orden de ubicacion de la coordenada dentro del segmento
         /// </summary>
-        public virtual int Orden { get; set; }
+        public virtual int Index { get; set; }
+
+        /// <summary>
+        /// Tipo de Identificador para la coordenada : Ramp/ Sb
+        /// </summary>
+        public virtual string Id { get; set; }
+
+        #region Métodos
+        public Coordenada()
+        { }
+
+        public Coordenada(double x, double y, double z)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
+            
+        }
+        public Coordenada(double x, double y, double z, int index, string id)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
+            this.Index = index;
+            this.Id = id;
+        }
+
 
         /// <summary>
         /// devlueve la ditancia inclinada entre dos coordenadas
@@ -57,11 +83,23 @@ namespace Simulacion_Library.Models
                         );
         }
 
+        /// <summary>
+        /// Calcula la distancia vertical entre dos coordenadas
+        /// </summary>
+        /// <param name="inicial"></param>
+        /// <param name="final"></param>
+        /// <returns></returns>
         public static double DistanciaVertical(Coordenada inicial, Coordenada final)
         {
             return final.Z - inicial.Z;
         }
 
+        /// <summary>
+        /// calcula la gradiente
+        /// </summary>
+        /// <param name="dblVertical"></param>
+        /// <param name="dblHorizontal"></param>
+        /// <returns></returns>
         public static double Gradiente(double dblVertical, double dblHorizontal)
         {            
             if (dblHorizontal == 0)
@@ -74,6 +112,12 @@ namespace Simulacion_Library.Models
             //dblHorizontal = 0 ? nGradiente : nGradiente = 100 * dblVertical / dblHorizontal;
         }
 
+        /// <summary>
+        /// calcula la gradiente
+        /// </summary>
+        /// <param name="inicial"></param>
+        /// <param name="final"></param>
+        /// <returns></returns>
         public static double Gradiente(Coordenada inicial, Coordenada final)
         {
 
@@ -89,6 +133,6 @@ namespace Simulacion_Library.Models
 
             //dblHorizontal = 0 ? nGradiente : nGradiente = 100 * dblVertical / dblHorizontal;
         }
-
+        #endregion
     }
 }
