@@ -17,8 +17,8 @@ namespace Simulacion
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmCamion());
-            //Application.Run(new frmRuta());
-            Application.Run(new frmListaExample());
+            Application.Run(new frmRuta());
+            //Application.Run(new frmListaExample());
         }
     }
 }

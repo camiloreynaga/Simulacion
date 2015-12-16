@@ -85,7 +85,7 @@ namespace Simulacion
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            bool r= coordenadaListSvr.Contains(coordenadaListSrg[0]);
+            //bool r= coordenadaListSvr.Contains(coordenadaListSrg[0]);
 
             //obteniendo las coordenadas origen, destino y asigandolas a veriables del tipo coordenada
             Coordenada origen = coordenadaListSrg[0];
@@ -114,14 +114,16 @@ namespace Simulacion
             
 
             //definiendo la orientacion 
+            // 1 = orientacion de Origen a Destino
             int orientacion = 1;
-            //buscando el origen index
+            //buscando el index para el segmento de la lista de segmentos que tiene a la coordenada 
+            //Origen de la ruta en el atributo PuntoIncial
              int origenIndex=  SegmentoList.FindIndex(
                  x => x.PInicial.X==origen.X &&
                  x.PInicial.Y== origen.Y &&
                  x.PInicial.Z== origen.Z);
 
-            // si busqueda de origen index no existe en punto inicial
+            // si busqueda de origen index no existe  ( retorna -1) en punto inicial
             // entonces buscar en punto final
              if (origenIndex < 0)
              {
@@ -129,10 +131,11 @@ namespace Simulacion
                   x => x.PFinal.X == origen.X &&
                   x.PFinal.Y == origen.Y &&
                   x.PFinal.Z == origen.Z);
+                 //establece como orientacion Destino hacia Origen
                  orientacion = -1;
                  
              }
-            //obteniendo el segmento
+            //obteniendo el segmento a partir del index que resulto de la busqueda anterior
             var SegmentoOrigen = SegmentoList.ElementAt<Segmento>(origenIndex);
             
             SegmentoOrigen.Orientacion = orientacion;
@@ -145,7 +148,7 @@ namespace Simulacion
             //para establecer la ruta
             Coordenada sgtCoordenada;
             //concatenando la secuencia de coordenadas de oriden a destino 
-            // si la orientacion es origen - destino (1), la sgte coordenada sera el punto final
+            // si la orientacion es origen hacia destino (1), la sgte coordenada sera el punto final
             sgtCoordenada = orientacion==1 ? SegmentoOrigen.PFinal : SegmentoOrigen.PInicial; 
             
             //agregando segmento origen a ruta
@@ -174,19 +177,28 @@ namespace Simulacion
                     segOrientacion = -1;
                 }
 
-                var Segmento = SegmentoList.ElementAt<Segmento>(SegIndex);
+                Segmento Segmento = SegmentoList.ElementAt<Segmento>(SegIndex);
                 Segmento.Orientacion = segOrientacion;
                 Segmento.Comentario = "Punto " + contador ;
                 
                 //eliminando el segmento de la lista, porque ya fue trabajado
                 SegmentoList.RemoveAt(SegIndex);
 
-                sgtCoordenada = segOrientacion == 1 ? SegmentoOrigen.PFinal : SegmentoOrigen.PInicial; 
+                //aqui estuvo el error ocurria que la variable Segmento no estab siendo usado sino que se como copie
+                // el codigo se me olvido cambiar SegmentoOrigen por Segmento, por eso no pasaba de la 2da iteracion el bucle
+                sgtCoordenada = segOrientacion == 1 ? Segmento.PFinal : Segmento.PInicial;
+                
+                //Aqui estoy probando si invierte cuando es orientacion -1, no lo he comprabad todavia
+                if (segOrientacion==-1)
+                    Segmento.Polylinea.Reverse();
+                
                 Ruta.Add(Segmento);
 
                 //aumentando el contador
                 contador++;
-                if (sgtCoordenada.Equals(destino))
+                if (sgtCoordenada.X == destino.X &&
+                    sgtCoordenada.Y==destino.Y &&
+                    sgtCoordenada.Z == destino.Z)
                     completado = true;
             }
 
@@ -318,6 +330,7 @@ namespace Simulacion
                     //agregando el segmento en la lista de segmentos 
                     segmento.PInicial = segmento.Polylinea.First<Coordenada>();
                     segmento.PFinal = segmento.Polylinea.Last<Coordenada>();
+                    //agregando el segmento a la variable global que almacena la lista de segmentos
                     SegmentoList.Add(segmento);
                     //inicializando segmento
                     segmento = new Segmento();
